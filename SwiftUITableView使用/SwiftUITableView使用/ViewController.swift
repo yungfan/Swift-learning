@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
        
-        let tabView = UITableView(frame:UIScreen.main.bounds , style:UITableViewStyle.plain)
+        let tabView = UITableView(frame:UIScreen.main.bounds , style:UITableView.Style.plain)
         tabView.delegate = self
         tabView.dataSource = self
         tabView.tableFooterView = UIView()
@@ -52,7 +52,7 @@ extension ViewController:UITableViewDataSource, UITableViewDelegate{
         
         if cell == nil {
             
-            cell = UITableViewCell(style:UITableViewCellStyle.default, reuseIdentifier:cellId)
+            cell = UITableViewCell(style:UITableViewCell.CellStyle.default, reuseIdentifier:cellId)
             
         }
         

@@ -25,7 +25,7 @@ print(a2)
 
 print(a1)
 
-for var item in a1 {
+for item in a1 {
 
   print(item)
 

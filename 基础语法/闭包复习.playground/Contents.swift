@@ -99,9 +99,9 @@ class MainViewController:UIViewController{
 
     lazy var customButton:UIButton = {
     
-        var btn = UIButton.init(type: UIButtonType.custom)
+        var btn = UIButton.init(type: UIButton.ButtonType.custom)
         
-        return customBtn
+        return btn
     
         
     }()

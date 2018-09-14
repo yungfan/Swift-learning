@@ -12,18 +12,12 @@ import UIKit
     
     @objc optional func heightForItem()  -> Float;
     
-    
-    
-
 
 }
 
 
 //swift遵循协议 : 协议名
 class MyView {
-    
-    
-
     
 
 }
