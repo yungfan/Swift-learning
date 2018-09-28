@@ -1,45 +1,96 @@
 //: Playground - noun: a place where people can play
 
-import UIKit
+//{@"id": @"123456", @"name": @"zhangsan"} []
+
+// 定义与初始化
+var dic1: [String : String] = ["id":"123456", "name":"zhangsan"]
+
+var dic11: Dictionary<String, String> = ["id":"123456", "name":"zhangsan"]
+
+//如果是Any 必须显示声明字典的类型
+let dic2: [String : Any] = ["age":13, "sex":"male"]
+
+let dic22 = Dictionary<String, String>()
+
+//基本使用
+
+dic1.count
+dic22.count
 
 
-var dic1: [String : Any] = ["name":"zhangsan", "age":20, "interest":[1,2,3]]
+dic1.isEmpty
+dic22.isEmpty
 
-//print(dic1["name"] ?? "Hello")
-dic1["age"] = 30
-
-dic1["sex"] = "male"
-
-dic1.removeValue(forKey: "age")
-
+//添加与修改语法看上去一样
+//如果key不存在 就添加 存在就修改
+//通过key间接操作value
+dic1["class"] = "移动应用开发171"
+dic1["name"] = "lisi"
 print(dic1)
 
-// 元组的方式遍历——推荐
-for(key, value) in dic1{
+dic1.updateValue("wangwu", forKey: "name")
+print(dic1)
 
-    print(key)
-    print(value)
+dic11.removeValue(forKey: "id")
+print(dic11)
 
-}
+dic1["name"]
 
 
-// 遍历字典中所有的值
-for value in dic1.values {
-    print(value)
-}
 
-// 遍历字典中所有的键
-for key in dic1.keys {
+var dic : [String : Any] = ["id":"123456789", "name":"zhangsan", "age": 15, "school":"第一中学"]
+
+
+for key in dic.keys {
     print(key)
 }
 
-var dic2: [String : Int] = ["grade":2014]
-var dic3: [String : Int] = ["age":50]
-
-for(key, value) in dic3{
-
-    dic2[key] = value
-
+for value in dic.values {
+    print(value)
 }
 
-print(dic2)
+print("==================")
+
+for (key, value) in dic {
+    
+    print("\(key) -- \(value)")
+}
+
+print("==================")
+
+for (index, value) in dic.enumerated() {
+    
+    
+      print("\(index) -- \(value)")
+}
+
+
+var dic3: [String : String] = ["id":"123456", "name":"zhangsan"]
+var dic4: [String : String] = ["age":"13", "sex":"male", "name":"lisi"]
+
+for (key, value) in dic4 {
+    
+    dic3[key] = value
+    
+}
+
+print(dic3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
