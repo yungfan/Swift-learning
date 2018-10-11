@@ -1,108 +1,125 @@
-//: Playground - noun: a place where people can play
+//C
+//int sum (int a, int b)
+//OC
+//- (int) sum:(int)a :(int)b
 
-import UIKit
+//Swift
+//func 函数名(参数列表) -> 返回值类型 {
+//    代码块
+//    return 返回值
+//}
 
-
-//int add(int a, int b){ return a + b;}
-//-(int)add:(int)a :(int)b
-
-//func 函数名(参数1, 参数2, ...) -> 返回值类型{ return 返回值类型的参数}
-
-//无参数无返回值的函数
-func divide(){
+func sum(a:Int, b:Int) -> Int {
     
-    print("除法")
+    let toal = a + b
     
-}
-
-//有参数没有返回值的函数
-func add(a:Int, b:Int){
-    
-    print("加法")
-    
+    return toal
 }
 
 
-
-//无参数有返回值的函数
-func multi() -> String{
+//常见的函数类型
+//没有参数,没有返回值
+func about() -> Void{
     
-    
-    return "乘法"
-}
-
-
-//有参数有返回值的函数
-func minus(a:Int, b:Int) -> Int{
-    
-    return a - b
-}
-
-
-
-divide()
-
-let a = multi()
-
-print(a)
-
-add(a: 30, b: 40)
-
-let b = minus(a: 70, b: 20)
-
-print(b)
-
-
-
-//内参与外参
-
-func ride(a:Int, b:Int, c:Int) -> Int{
-    
-    return a + b + c
+    print("iPhone Xs Max")
     
 }
 
-
-//默认情况下,参数名称既是内部参数也是外部参数
-ride(a: 3, b: 4, c: 5)
-
-
-func ride(num1 a:Int, num2 b:Int, num3 c:Int, num4 d:Int) -> Int{
+func about1() -> (){
     
-    return a + b + c + d
+    print("iPhone Xs Max")
+}
+
+//最常用
+func about2() {
+    
+    print("iPhone Xs Max")
+}
+
+about()
+about1()
+about2()
+
+//有参数,没有返回值
+func callPhone(phoneNumber:String){
+    
+    print("打电话给\(phoneNumber)")
+}
+
+callPhone(phoneNumber: "18888888888")
+
+
+//没有参数,有返回值
+func readMessage() -> String {
+    
+    return "这是一条来自10086的短信"
+}
+
+let message = readMessage()
+print(message)
+
+
+//有参数,有返回值
+let total = sum(a: 10, b: 20)
+print(total)
+
+
+//返回值是复杂类型
+import Foundation
+func triple(info:String) -> (name:String, age:Int){
+    
+    let infos = info.components(separatedBy: ",")
+    
+    return (infos[0], Int(infos[1])!)
+}
+
+let p = triple(info: "zhangsan,20")
+p.name
+p.age
+
+//使用注意
+//函数的参数虽然没有用var和let修饰,但它是常量,不能在函数内修改
+func say(info:String){
+    
+    
+    //info = "2018-9-29"
+    
+    print("传入的信息为：\(info)")
     
 }
 
-
-//如果想要有外部参数,可以在变量名前加标签来设置
-ride(num1: 1, num2: 2, num3: 3, num4: 4)
+say(info: "今天是周六，补课")
 
 
-//如果不想要外部参数,可以在参数名称前加_
-func ride(_ a:Int, _ b:Int) -> Int{
+//形式参数
+func minus(a num1:Int, b num2:Int) -> Int{
     
-    return a+b
-    
+    return num1 - num2
 }
 
-ride(3, 4)
+minus(a: 30, b: 20)
 
+
+func multi(_ num1:Int, _ num2:Int) -> Int{
+    
+    return num1 * num2
+}
+
+multi(30, 20)
 
 
 //默认参数
-func makeCoffee(str:String = "拿铁") ->String{
+func makeCoffee(type:String = "卡布奇诺") -> String {
     
-    return "你做了一杯\(str)咖啡"
+    
+    return "您点的了一杯\(type)咖啡"
     
 }
 
-
-//var coffee = makeCoffee()
-var coffee = makeCoffee(str: "星巴克")
-
+makeCoffee(type: "拿铁")
+makeCoffee()
 
 //可变参数 你传入的参数个数不确定
-
 func Add(num:Int...) ->Int {
     
     var sum:Int = 0
@@ -166,9 +183,27 @@ op(3,4)
 
 
 
+//函数作为参数
+// 将函数的类型作为函数的参数
+func printResult(a : Int, b : Int, calculateMethod : (Int, Int) -> Int) {
+    print(calculateMethod(a, b))
+}
 
+printResult(a: 10, b: 20, calculateMethod: addTwoInts)
+printResult(a: 10, b: 20, calculateMethod: multiplyTwoInt)
 
-
+//函数作为返回值
+func getResult(a:Int) -> (Int, Int)->Int{
+    if a > 10 {
+        return addTwoInts
+    }
+    else{
+        return multiplyTwoInt
+    }
+}
+//调用返回的函数
+getResult(a: 2)(10,20)
+getResult(a: 12)(10,20)
 
 
 

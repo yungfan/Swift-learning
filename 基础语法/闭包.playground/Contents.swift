@@ -1,50 +1,101 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-// {
-//    (形参) -> 返回值类型 in
-//     执行代码
-// }
-
-
-// func 方法名 (形参) -> 返回值类型{}
-
-
-
-var closure:(Int, Int)->(Int) = {
+//引入
+func square(number:Int) ->Int {
     
-    (a:Int, b:Int) -> Int in
-    
-      return a + b
+    return number * number
 }
 
-closure(3,4)
+square(number: 10)
 
-
-var closure2 = {
+let squareClosure = {
+    (number: Int) -> Int in
     
-    print("Hello word")
-
+    return number * number
+    
 }
 
-closure2()
+squareClosure(10)
 
 
-//尾随闭包：闭包是函数的最后一个参数
-func add (b:(Int, Int)->(Int)){
-    
-    print("add")
+//简单闭包
+let demo = { print("Hello 闭包") }
 
+demo()
+
+
+let divide =   {
+        (num1:Int, num2:Int) -> Int in
+        
+        return num1/num2
 }
 
-//不要放在()里面，拿到()之后来
-add(){
+divide(100,10)
+
+//闭包表达式定义
+//{ (parameters) -> (return type) in
+//    statements
+//}
+
+
+//参数名称缩写
+func getScore(score:[Int], con:(Int)->Bool) -> [Int] {
     
-    (a:Int, b:Int) -> Int in
+    //定义一个新的数组
+    var newScore:[Int] = [Int]()
     
-    return a + b
+    for item in score {
+        
+        if con(item) {
+            
+            newScore.append(item)
+        }
+        
+    }
+    
+    return newScore
 }
+
+//print(getScore(score: [65,75, 85, 95], con: {(s :Int)->Bool in return s>80 }))
+//print(getScore(score: [65,75, 85, 95], con: {(s :Int) in return s>80 }))
+//print(getScore(score: [65,75, 85, 95], con: {s in return s>80 }))
+//print(getScore(score: [65,75, 85, 95], con: { $0>80 }))
+
+//引申
+let arr = [65,75, 85, 95]
+
+print(arr.filter({$0>80}))
+
+arr.forEach { (s) in
+    print(s)
+}
+
+
+//捕获值
+func makeIncrementor(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementor() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementor
+}
+
+let a = makeIncrementor(forIncrement: 10)
+
+a()
+a()
+a()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
