@@ -2,8 +2,21 @@
 
 import UIKit
 
+//定义方式一
+enum Person {
+    
+    case Zhangsan
+    case Lisi
+    case Wangwu
+    
+}
+//定义方式二
+enum Person2{
+    
+    case Zhangsan, Lisi, Wangwu
+}
 
-//定义的时候指定枚举值的类型
+//赋值
 enum SiJi :Int {
 
     case Spring = 1
@@ -11,6 +24,15 @@ enum SiJi :Int {
     case Autumn = 3
     case Winter = 4
 
+}
+
+enum Method :Double {
+    
+    case Add = 1.0
+    case Sub = 2.0
+    case Mul = 3.0
+    case Div = 4.0
+    
 }
 
 
@@ -35,6 +57,7 @@ if let p = a {
     
     switch p {
     
+        //类型推断
         case .Spring:
             print("Spring")
         case .Summer:
