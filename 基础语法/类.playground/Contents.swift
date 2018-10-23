@@ -1,102 +1,90 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 
-
-class Student {
+//定义类
+class Person {
     
-    var name:String = "zhangsan"
+    var name = "Zhangsan"
+    var age = 10
+    var sex = "man"
     
-    var stuno:String = "141055555"
-    
-    var age:Int = 15
-
-    
-    func eat(food:String) {
+    func say() {
         
-        print("吃饱饭" + food)
-        
+        print("人会说话")
     }
-    
-    //static 修饰的就是类方法
-    static func exam(sc:String) -> Float{
-        
-        print("参加考试" + sc)
-        
-        return 89.0
-        
-    }
-    
-    
-    //构造函数都是init 只不过参数不同，参数就是当前类中成员变量的随机组合
-    
-    //构造函数的重载:名字一样但参数个数或者类型不一样
-    
-    //默认情况下 所有的类都有一个不带参数的构造函数
-//    init(){
-//    
-//    }
-    
-    init(age:Int) {
-        
-        print("***我被调用")
-        
-        self.age = age
-    }
-    
-    init(name:String) {
-        print("+++我被调用")
-        
-        self.name = name
-    }
-    
-    init(name:String, stuno:String) {
-        
-        print("===我被调用")
-
-        
-        self.name = name
-        self.stuno = stuno
-    }
-    
-    
-    //便利构造函数 convenience init
-    //必须在函数里面调用其他的构造函数
-    convenience init(name:String, stuno:String, age:Int) {
-        
-        print("---我被调用")
-
-        //调用上面的构造函数 将参数传过去
-        self.init(name: name, stuno: stuno)
-        self.age = age
-    
-    }
-    
-    //析构函数
-    deinit {
-        
-        //释放监听器、释放Timer、清除内存等等
-        
-        print("该类被释放")
-    }
-
     
 }
 
-var stu:Student? = Student(name: "lisi", stuno: "12345678", age: 10)
+//构造函数
+//默认构造函数
+var p1 = Person()
+p1.name
+p1.age = 30
+p1.age
+p1.sex
+p1.say()
 
-print(stu!.name)
-print(stu!.stuno)
-print(stu!.age)
 
-stu!.eat(food: "米饭")
+//引用类型
+//修改p2
+var p2 = p1
+p2.name = "Lisi"
+p2.age = 40
+p2.sex = "woman"
+//对p1有影响
+p1.name
+p1.age
+p1.sex
 
-Student.exam(sc: "Swift")
+//特征运算符
+let p3 = Person()
+p1 === p2
+p1 === p3
+p1 !== p3
 
-// alloc <==> dealloc
 
-// init <==> deinit
 
-// 可选型才可以赋值为nil
-stu = nil
+//继承
+// 定义一个父类
+class Vehicle {
+    var currentSpeed = 0.0
+    func makeNoise() {
+        print("Ba Ba")
+    }
+    //不能被子类重写
+    final func run() {
+        print("Run Run")
+    }
+}
 
+// 定义一个子类
+class Bicycle: Vehicle {
+    var hasBasket = false
+    
+    override func makeNoise() {
+        print("Ling Ling")
+    }
+    
+}
+
+
+var bicycle = Bicycle()
+
+bicycle.makeNoise()
+
+// 定义一个子类
+class Car: Vehicle {
+    var banner = "皖B12345"
+    
+    override func makeNoise() {
+        print("Di Di")
+    }
+}
+
+var car = Car()
+car.makeNoise()
+
+
+//类型转换
+var vehicle = Vehicle()
+vehicle = bicycle as Vehicle
+vehicle.makeNoise()

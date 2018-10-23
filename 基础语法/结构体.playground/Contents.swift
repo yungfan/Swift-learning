@@ -1,98 +1,51 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 
-struct Student {
-
-    var name:String = "zhangsan"
+//定义结构体
+struct Person {
     
-    var stuno:String = "141055555"
+    var name = "Zhangsan"
+    var age = 10
+    var sex = "man"
     
-    var age:Int = 15
-    
-    func eat(food:String) {
+    func say() {
         
-        print("吃饱饭" + food)
-        
-    }
-
-
-    func exam(sc:String) -> Float{
-        
-        print("参加考试" + sc)
-    
-        return 89.0
-    
-    }
-
-}
-
-//如果在结构体构造的时候没有给变量赋值，在构造该结构体变量时需要传入
-var stu = Student()
-
-print(stu.name)
-stu.exam(sc: "iOS")
-
-
-
-
-struct Teacher {
-    
-    var name:String
-    
-    var age:Int
-    
-    func eat(food:String) {
-        
-        print("吃饱饭" + food)
-        
-    }
-    
-    
-    
-    
-
-    
-    //结构体中默认又一个不带任何参数的构造函数 名为init(){}
-    init(name:String, age:Int) {
-        
-        self.name = name
-        self.age = age
-        
+        print("人会说话")
     }
     
 }
 
-//希望你在构造时初始化结构体里面的所有的成员变量
-var tea = Teacher(name:"lisi", age:35)
+//构造函数
+//默认构造函数()
+var p1 = Person()
+p1.name
+p1.age
+p1.sex
+p1.say()
 
-print(tea.age)
-print(tea.name)
+//成员构造函数
+var p2 = Person(name: "Lisi", age: 20, sex: "woman")
 
-
-
-extension Teacher {
-
-    func work(task:String) -> String {
-        
-        print(task)
-        
-        return "每天都要上课";
-    }
-
-    //为了能够在实例方法中修改属性值，可以在方法定义前添加关键字mutating
-    mutating func setAge()  {
-        
-        self.age  = 20
-        
-    }
-
-}
-
-var teacher = Teacher(name:"wangwu", age:30)
-print(teacher.work(task: "改作业"))
+p2.name
+p2.age = 30
+p2.age
+p2.sex
+p2.say()
 
 
+//值类型
+var p3 = p2
+
+//对p3进行修改 并不会影响p2的值
+p3.age = 40
+p3.name = "Wangwu"
+
+p2.name
+p2.age
+
+p3.name
+p3.age
 
 
-
+//CGRect：矩形 iOS开发中用于描述控件的位置
+//CGSize：宽高 iOS开发中用于描述控件的大小
+//CGPoint：点(x,y) iOS开发中用于描述控件的起始位置（坐标）
