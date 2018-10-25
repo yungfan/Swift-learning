@@ -1,114 +1,101 @@
-//: Playground - noun: a place where people can play
 
-import UIKit
 
-class Student{
+class Student {
     
-    //存储属性:存储实例的常量和变量
-    var stuname:String = "zhangsan"
-    let stuclass:String = "移动互联151"
+    //存储属性
+    var age :Int = 0
+    var chineseScore :Double = 0.0
+    var englishScore :Double = 0.0
     
-    var iOSScore : Double = 0.0
-    var UIScore : Double = 0.0
-    
-    
-    
-    
-    //计算属性:通过某种方式计算出来的属性  @property
-    var totalScore :Double {
+    //属性观察器
+    var name:String?{
         
-        set(score){
+        //newValue
+        willSet{
             
-            //set方法应该传一个值进来 默认情况下 看不到默认值的变量 newValue
-            
-            print("调用了set方法")
-            
-            //self.totalScore =  newValue
-            
-            iOSScore = score
-            
+            print("willSet")
+            if let newValue = newValue {
+                print(newValue)
+            }
         }
         
-        get{
-            
-            print("调用了get方法")
-            
-            return (iOSScore + UIScore) / 2;
-        }
-        
-        
-    }
-    
-    
-    //类属性:与整个类自身相关的属性
-    static var stuAge:Int = 20
-    
-    
-    
-    //属性观察器，通常是监听存储属性和类属性的改变
-    var stuno:String? {
-        
-        //在属性值被存储之前设置。此时新属性值作为一个常量参数被传入。该参数名默认为newValue
-        willSet {
-            
-            print("调用了willSet方法")
-            print(newValue!)
-            
-        }
-        
-        //在新属性值被存储后立即调用。与willSet相同，此时传入的是属性的旧值，默认参数名为oldValue
+        //oldValue
         didSet{
             
-            print("调用了didSet方法")
-            
-            
-            //使用if let 警告
-            if oldValue != nil{
-                
-                print(oldValue!)
-                
-                
+            print("didSet")
+            if let oldValue = oldValue {
+                print(oldValue)
             }
-            
         }
         
     }
     
+  
     
-    //懒加载属性 lazy
-    lazy var stugrade : [String] = {
+    //计算属性
+    var averageScore :Double {
         
-        print("懒加载")
+        //访问（获取）
+        get{
+            
+            print("get")
+            
+            return (chineseScore + englishScore) / 2
+        }
         
-        return ["A", "B"]
+        //设置值的时候
+        set{
+            
+            print("set")
+            
+            //千万不要在这里设置值 会死循环
+            //self.averageScore = newValue
+        }
         
+    }
+    
+    //只读计算属性
+    var averageScore2 :Double {
+        
+            return (chineseScore + englishScore) / 2
+    }
+    
+    //类属性
+    static var mathScore :Double = 99.5
+    
+    
+    //懒加载属性
+    lazy var teacher :[String] = {
+        
+        
+        ()->[String] in
+        
+        print("懒加载属性")
+        return ["Mr Zhang", "Mr Li", "Mr Yang"]
     }()
-    
-    
-    
-    
+
 }
 
-
 var stu = Student()
-stu.totalScore = 60.0
-stu.UIScore = 70.0
+//存储属性
+stu.age = 10
+stu.age
+stu.chineseScore = 90.9
+stu.englishScore = 80.9
 
+//计算属性
+stu.averageScore
+stu.averageScore = 90.0
+//类属性的访问
+Student.mathScore
 
-var total = stu.totalScore
+//懒加载属性
+stu.teacher
+stu.teacher
+stu.teacher
+stu.teacher
+stu.teacher
 
-print(total)
-
-print(stu.iOSScore)
-
-print(Student.stuAge)
-
-
-
-stu.stuno = "111222333"
-stu.stuno = "333222111"
-
-print(stu.stugrade)
-
-
-
+//属性观察器
+stu.name = "Zhangsan"
+stu.name = "Lisi"
