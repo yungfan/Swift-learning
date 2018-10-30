@@ -27,7 +27,6 @@ class Student {
                 print(oldValue)
             }
         }
-        
     }
     
   
@@ -99,3 +98,64 @@ stu.teacher
 //属性观察器
 stu.name = "Zhangsan"
 stu.name = "Lisi"
+
+//属性的继承与重写
+class SeniorStudent : Student{
+    
+    //子类都可以通过提供getter和setter对属性进行重写
+    override var chineseScore: Double{
+        
+        get{
+            
+            return 90.5
+        }
+        
+        set{
+            
+            
+        }
+        
+    }
+    
+    //不可以将继承来的读写属性重写为只读属性
+    override var averageScore: Double{
+        
+        get{
+            
+            return 90.5
+        }
+        
+        
+        set{
+            
+            
+        }
+    }
+    
+    //如果父类已经添加了属性观察器，当属性发生变化时，父类与子类都会得到通知
+    override var name:String?{
+        
+        //newValue
+        willSet{
+            
+            print("willSet")
+            if let newValue = newValue {
+                print(newValue)
+            }
+        }
+        
+        //oldValue
+        didSet{
+            
+            print("didSet")
+            if let oldValue = oldValue {
+                print(oldValue)
+            }
+        }
+    }
+    
+}
+
+
+var seniorStudent = SeniorStudent()
+seniorStudent.name = "Wangwu"
