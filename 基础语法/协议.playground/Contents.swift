@@ -42,6 +42,7 @@ struct Dog : Pet{
     }
 }
 
+
 //定义第一个协议
 protocol CrazySportProtocol {
     func jumping()
