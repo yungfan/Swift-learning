@@ -18,12 +18,12 @@ enum Person2{
 
 //赋值
 enum SiJi :Int {
-
+    
     case Spring = 1
     case Summer = 2
     case Autumn = 3
     case Winter = 4
-
+    
 }
 
 enum Method :Double {
@@ -37,9 +37,9 @@ enum Method :Double {
 
 
 enum Compass:String{
-
+    
     case North = "A", South = "B", East = "C", West = "D"
-
+    
 }
 
 var compass = Compass.North
@@ -56,18 +56,17 @@ let a = SiJi(rawValue:2)
 if let p = a {
     
     switch p {
-    
-        //类型推断
-        case .Spring:
-            print("Spring")
-        case .Summer:
-            print("Summer")
-        case .Autumn:
-            print("Autumn")
-        case .Winter:
-            print("Winter")
-        default:
-            print("error")
+        
+    //类型推断
+    case .Spring:
+        print("Spring")
+    case .Summer:
+        print("Summer")
+    case .Autumn:
+        print("Autumn")
+    case .Winter:
+        print("Winter")
+        
     }
 }
 
@@ -82,7 +81,5 @@ case .Autumn:
     print("Autumn")
 case .Winter:
     print("Winter")
-default:
-    print("error")
 }
 

@@ -24,10 +24,10 @@ import UIKit
 
 
 //第一层文件夹名称
-let CACHEPATH = "K12Cache"
+let CACHEPATH = "Cache"
 
 //内层文件夹名称
-let MarkingPath = "K12Cache/Marking/"
+let MarkingPath = "Cache/Marking/"
 
 class IOUtils{
     

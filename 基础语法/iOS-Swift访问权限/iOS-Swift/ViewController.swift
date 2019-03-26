@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         //同一个模块的文件可以直接访问 不像OC需要导入
-        SecViewController()
+        _ = SecViewController()
     }
 }
 

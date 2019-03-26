@@ -23,6 +23,7 @@ print("小明今年\(age)岁，身高\(height)米，体重\(weight)kg")
 
 
 let dog = "旺财"
+//常量不可以改变 所以会报错
 dog = "旺旺"
 
 
