@@ -1,5 +1,7 @@
 import UIKit
 
+
+//JSON
 let res = """
 {
 "name": "Jone",
@@ -9,6 +11,7 @@ let res = """
 }
 """
 
+//定义结构体实现Codable，一般情况下字段要与JSON的key一致，否则需要额外处理
 struct Student: Codable {
     let name: String
     let age: Int
