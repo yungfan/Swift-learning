@@ -1,4 +1,5 @@
 import UIKit
+//引入PlaygroundSupport
 import PlaygroundSupport
 
 
@@ -43,4 +44,5 @@ extension ViewController {
 }
 
 let vc = ViewController()
+//将显示的内容复制给PlaygroundPage.current.liveView
 PlaygroundPage.current.liveView = vc
