@@ -58,3 +58,45 @@ var total = sum.reduce(0) { (result, num) -> Int in
 print(total)
 
 
+//6. first(where:) last(where:) removeAll(where:)
+let element = array.first(where: {$0.hasPrefix("A")})
+print(element!)
+let element2 = array.last(where: {$0.hasPrefix("A")})
+print(element2!)
+array.removeAll(where: { $0.hasPrefix("A") })
+print(array)
+
+//7. allSatisfy — 条件符合（Swift 4.2）
+
+//判断数组的所有元素是否全部大于85
+let scores = [86, 88, 95, 92]
+//检查序列中的所有元素是否满足条件，返回BOOL
+let passed = scores.allSatisfy({ $0 > 85 })
+print(passed)
+
+
+//8. compactMap — 转换（Swift 4）
+
+let arr:[Int] = [1, 2, 34, 5, 6, 7, 8, 12, 45, 6, 9]
+//返回操作的新数组（并不是筛选）,数组、字典都可以使用
+//它的作用是将 map 结果中那些 nil 的元素去除掉，这个操作通常会 “压缩” 结果，让其中的元素数减少，这也正是其名字中 compact 的来源
+let compact = arr.compactMap({$0%2 == 0})
+print(compact)
+
+
+//9. mapValues — 转换value （Swift 4）
+
+let dic:[String : Int] = [
+    "first": 1,
+    "second": 2,
+    "three": 3,
+    "four": 4
+]
+//字典中的函数, 对字典的value值执行操作, 返回改变value后的新的字典
+let mapValues = dic.mapValues({ $0 + 2 })
+print(mapValues)
+
+// 10. compactMapValues — 上面两个的合并（Swift 5）
+//将上述两个方法的功能合并在一起，返回一个对value操作后的新字典， 并且自动过滤不符合条件的键值对
+let newDic = dic.compactMapValues({String($0)})
+print(newDic)
